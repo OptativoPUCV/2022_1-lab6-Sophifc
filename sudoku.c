@@ -54,7 +54,21 @@ List* get_adj_nodes(Node* n){
   for (int i=0; i<9; i++){
     for(int k=0; k<9; k++){
 
+      int cont=1;
       if(n->sudo[i][k]==0){
+
+        for(int f=0;f<9;f++){
+          if(cont==n->sudo[i][f] || cont==n->sudo[f][i] ){
+            cont++;
+            continue;
+          }
+          else{
+            n->sudo[i][k]=cont;
+            pushBack(list,n);
+            
+          }
+          
+        }
         
       }
       
