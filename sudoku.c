@@ -45,13 +45,54 @@ void print_node(Node* n){
 
 int is_valid(Node* n){
 
-    return 1;
+  Node * nodo = createNode();
+  nodo = copy(n);
+  int k;
+
+  // fila
+  for(int i = 0 ; i < 9; i++)
+  {
+    for(int j = 0; j < 9; j++)
+    {
+      k = j + 1;
+      while(k < 9)
+      {
+        if(n->sudo[i][j] != 0 && nodo->sudo[i][k] != 0)
+        {
+          if(n->sudo[i][j] == nodo->sudo[i][k])
+            return 0;
+        }
+        k++;
+      }
+    }
+  }
+  
+  // columna
+  for(int j = 0; j < 9 ; j++)
+  {
+    for(int i = 0; i < 9 ; i++)
+    {
+      k= i + 1;
+      while(k < 9)
+      {
+        if(n->sudo[i][j] != 0 && nodo->sudo[k][j] != 0)
+        {
+          if(n->sudo[i][j] == nodo->sudo[k][j])
+            return 0;
+        }
+      k++;
+    }
+  }
+}
+
+ return 1;
 }
 
 
 List* get_adj_nodes(Node* n){
   List* list=createList();
   int valido;
+  
   for (int i=0; i<9; i++){
     for(int k=0; k<9; k++){
 
@@ -65,11 +106,8 @@ List* get_adj_nodes(Node* n){
           if(valido==1){
             pushBack(list,ad);
           }
-          
         }
-        
       }
-      
     }
   }
   return list;
