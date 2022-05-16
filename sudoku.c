@@ -78,6 +78,26 @@ int is_valid(Node* n){
   }
 }
 
+  
+  for(k=0;k < 9;k++){ 
+    for(int p = 0 ; p < 9 ; p++){
+      int i = 3 * (k/3) + (p/3);
+      int j = 3 * (k%3) + (p%3);
+      //int l = 0;
+    for(int l=0;l < 9;l++){
+      int i2 = (3*(k/3) + (l/3));
+      int j2 = (3*(k%3) + (l%3));
+      if(i2 != i && j2 != j){
+        if(n->sudo[i][j] != 0 && n->sudo[i2][j2] != 0){
+          if(n->sudo[i][j] == nodo->sudo[i2][j2]){
+            return 0;
+          }
+        } 
+      }
+    }
+  }
+}
+  
  return 1;
 }
 
