@@ -123,7 +123,8 @@ Node* DFS(Node* initial, int* cont){
   push(pila, initial);
   while(!is_empty(pila)){
     
-    Node* nodo= top(pila); pop(pila);
+    Node* nodo= top(pila);
+    pop(pila);
      if(is_final(nodo) == 1){
        return nodo;
       }
